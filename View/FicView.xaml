@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="FicBook.View.FicView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:FicBook.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:x1="clr-namespace:FicBook.ViewModel.Helpers" xmlns:viewmodel="clr-namespace:FicBook.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:FicViewModel}"
+             mc:Ignorable="d" d:DesignWidth="800" Height="297">
+ 
+    <Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <i:InvokeCommandAction Command="{Binding ReadFicCommand}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="0" Background="#FF95EECB">
+            <ToggleButton
+              Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
+              IsChecked="False"
+              Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+              ToolTip="MaterialDesignFlatPrimaryToggleButton" Width="30" Height="30" Background="#FF00838F" Foreground="#FF00505B" HorizontalAlignment="Right" Margin="0,0,17,0" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Image Source="{Binding Image}"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Label x:Name="TitleLabel" Content="{Binding Title}"  Background="#FF95EECB" Foreground="#FF323232" FontFamily="Century Gothic" VerticalContentAlignment="Center" Padding="24,4,4,4" FontSize="18" FontWeight="Bold"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="{Binding FocusActive}"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding FocusColor}" Foreground="White" FontFamily="Century Gothic" FontWeight="Bold" FontSize="18"  BorderBrush="#FF95EECB" BorderThickness="5,0,0,0"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding AgeActive}"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding AgeColor}" Foreground="White" FontFamily="Century Gothic" FontWeight="Bold" FontSize="18"  BorderBrush="#FF95EECB" BorderThickness="5,0,0,0"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Label Content="{Binding Size}"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF4FB3BF" Foreground="#FF373737" FontFamily="Century Gothic" FontWeight="Bold" FontSize="18" BorderBrush="#FF95EECB" BorderThickness="5,0,0,0"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <materialDesign:PackIcon Kind="BookOpenVariant" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="8" Width="26" Height="26"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Label Content="{Binding Likes}"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF4FB3BF" Foreground="#FF373737" FontFamily="Century Gothic" FontWeight="Bold" FontSize="18" BorderBrush="#FF95EECB" BorderThickness="5,0,0,0"/>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <materialDesign:PackIcon Kind="HeartMultiple" Foreground="#FF95EECB" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="8" Width="26" Height="26"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="Автор" BorderBrush="#FF95EECB" BorderThickness="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Background="#FF00838F"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Author}"   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Padding="47,4,4,4">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF4FB3BF" Opacity="0.301"/>
+                        </Label.Background>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="Фандом" BorderBrush="#FF95EECB" BorderThickness="5,5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Background="#FF00838F"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Fandom}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Padding="47,4,4,4">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF4FB3BF" Opacity="0.301"/>
+                        </Label.Background>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="Метки" BorderBrush="#FF95EECB" BorderThickness="5,5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Background="#FF00838F"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ScrollViewer>
+                        <ListBox
+                             Style="{StaticResource MaterialDesignFilterChipSecondaryListBox}" IsEnabled="False" ItemsSource="{Binding Tags}" MaxWidth="550">
+                        </ListBox>
+                    </ScrollViewer>
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="Описание" BorderBrush="#FF95EECB" BorderThickness="5,5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Century Gothic" FontSize="14" Background="#FF00838F"/>
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <ScrollViewer>
+                        <TextBlock Text="{Binding Description}"  MaxWidth="680" FontFamily="Century Gothic" FontSize="10" Padding="47,4,4,4" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap">
+                            <TextBlock.Background>
+                                <SolidColorBrush Color="#FF4FB3BF" Opacity="0.301"/>
+                            </TextBlock.Background>
+                        </TextBlock>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <TextBlock x:Name="TextFull"  Foreground="{x:Null}" Visibility="Hidden" Text="{Binding FullText}"></TextBlock>
+    </Grid>
+</UserControl>

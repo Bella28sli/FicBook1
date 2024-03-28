@@ -1,0 +1,65 @@
+﻿<Window x:Class="FicBook.View.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:FicBook.View"
+        mc:Ignorable="d"
+        Title="FicBook Registration" Height="900" Width="800" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="20" CenterX="0.5" CenterY="0.5"/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="#FF303030" Offset="0.201"/>
+            <GradientStop Color="#FF303030" Offset="0.835"/>
+            <GradientStop Color="#FF005662" Offset="0.526"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="4.2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap" Text="Введите желаемые логин и пароль" TextAlignment="Center" FontSize="48" Foreground="#FF52C7B8" FontFamily="Century Gothic" Margin="0,10,0,11" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <TextBox
+                Text="{Binding EnteredName, Mode=TwoWay}"
+                materialDesign:HintAssist.Hint="Логин"
+                AcceptsReturn="True"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                TextWrapping="Wrap" AllowDrop="False" Foreground="#FF52C7B8" FontFamily="Century Gothic" FontSize="48" Margin="-3,0,4,10" />
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <TextBox
+                Text="{Binding EnteredPassword, Mode=TwoWay}"
+                materialDesign:HintAssist.Hint="Пароль"
+                AcceptsReturn="True"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                TextWrapping="Wrap" AllowDrop="False" Foreground="#FF52C7B8" FontFamily="Century Gothic" FontSize="48" Margin="-3,0,4,10" />
+        </Grid>
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Button
+                Command="{Binding UserExistsCommand}"
+            Content="ЗАРЕГИСТРИРОВАТЬСЯ"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Width="800" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" FontFamily="Century Gothic" FontWeight="Bold" FontStretch="UltraExpanded" />
+        </Grid>
+    </Grid>
+</Window>
